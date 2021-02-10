@@ -14,6 +14,7 @@ class App extends React.Component{
       followers: null,
       following: null,
       signedUp: [],
+      users: []
     }
   }
 
@@ -52,10 +53,10 @@ class App extends React.Component{
   handleSubmit=(event)=>{
     event.preventDefault();
     const newName={
-      signedUp: []
+      signedUp: this.state.signedUp
     }
     this.setState({
-      signedUp: [...this.state.signedUp, newName]
+      ...this.state, users: [newName]
     })
   }
 
@@ -70,13 +71,15 @@ class App extends React.Component{
         <p>Followers: {this.state.followers}</p>
         <p>Following: {this.state.following}</p>
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={(event)=>this.handleSubmit(event)}>
           <label htmlFor="signedUp">Sign In: 
             <input name="signedUp" placeholder="Sign In Here" value={this.state.signedUp} onChange={this.handleChange} />
             <button>Submit</button>
           </label>
         </form>
-        <p>{this.state.signedUp}</p>
+        {this.state.users.map(function(user){
+          return <p>{user.signedUp}</p>
+        })}
       </div>
     )
   }
