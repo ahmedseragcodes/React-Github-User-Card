@@ -13,3 +13,6 @@ div {
 img {
     width: 10rem;
 }
+select, input {
+    margin: 1rem;
+}

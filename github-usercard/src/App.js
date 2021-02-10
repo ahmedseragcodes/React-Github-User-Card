@@ -13,6 +13,7 @@ class App extends React.Component{
       bio: "",
       followers: null,
       following: null,
+      signedUp: [],
     }
   }
 
@@ -42,6 +43,22 @@ class App extends React.Component{
     }
   }
 
+  handleChange=(event)=>{
+    this.setState({
+      ...this.state, signedUp: event.target.value
+    })
+  }
+
+  handleSubmit=(event)=>{
+    event.preventDefault();
+    const newName={
+      signedUp: []
+    }
+    this.setState({
+      signedUp: [...this.state.signedUp, newName]
+    })
+  }
+
   render(){
     console.log(API);
     return (
@@ -52,6 +69,14 @@ class App extends React.Component{
         <p>About Me: {this.state.bio}</p>
         <p>Followers: {this.state.followers}</p>
         <p>Following: {this.state.following}</p>
+
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="signedUp">Sign In: 
+            <input name="signedUp" placeholder="Sign In Here" value={this.state.signedUp} onChange={this.handleChange} />
+            <button>Submit</button>
+          </label>
+        </form>
+        <p>{this.state.signedUp}</p>
       </div>
     )
   }
