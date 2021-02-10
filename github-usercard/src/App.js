@@ -33,6 +33,14 @@ class App extends React.Component{
     })
   }
 
+  //manually changed state within react dev tools, causing first console log to return 
+  componentDidUpdate(prevProps, prevState){
+    if (this.state.bio===prevState.bio){
+      console.log("component has updated, bio is the same");
+    } else {
+      console.log("nothing has changed");
+    }
+  }
 
   render(){
     console.log(API);
@@ -41,6 +49,7 @@ class App extends React.Component{
         <h1>Github Profile Showcase</h1>
         <h2>{this.state.username}</h2>
         <img src={this.state.avatarURL} alt="github selfie" />
+        <p>About Me: {this.state.bio}</p>
         <p>Followers: {this.state.followers}</p>
         <p>Following: {this.state.following}</p>
       </div>
