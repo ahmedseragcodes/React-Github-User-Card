@@ -3,6 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import { API } from "../src/constants/index";
+import DisplayFollowers from "./components/DisplayFollowers";
 
 class App extends React.Component{
   constructor(){
@@ -80,6 +81,8 @@ class App extends React.Component{
         {this.state.users.map(function(user){
           return <p>{user.signedUp}</p>
         })}
+
+        <DisplayFollowers />
       </div>
     )
   }

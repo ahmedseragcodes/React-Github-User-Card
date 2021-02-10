@@ -1,3 +1,6 @@
 const API="https://api.github.com/users/ahmedseragcodes";
 
-export {API};
+const followersAPI="https://api.github.com/users/ahmedseragcodes/followers";
+
+
+export {API, followersAPI};
